@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100-Tage Mini-Guide · Cascadeur · Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,30..100;1,9..144,300..900,30..100&family=DM+Sans:opsz,wght@9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ecdc; --paper-warm: #ede4d0; --paper-dark: #e2d6b8;
+    --ink: #1f1a14; --ink-soft: #5a4d3a; --ink-faint: #8a7d68;
+    --terracotta: #b85528; --terracotta-deep: #7a3414;
+    --cobalt: #284858; --sage: #8a9878; --warning: #c46b3a; --rule: #c8b89a;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+    color: var(--ink); background: var(--paper);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.06 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc { max-width: 920px; margin: 0 auto; padding-bottom: 5rem; }
+
+  /* Cover */
+  .cover { padding: 3.5rem 4rem 2.5rem; border-bottom: 1px solid var(--rule); position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; top: -10%; right: -8%; width: 50%; aspect-ratio: 1; background: radial-gradient(circle, rgba(184, 85, 40, 0.08) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
+  .cover-marker { display: flex; align-items: center; gap: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 2rem; }
+  .cover-marker .ml { flex: 1; height: 1px; background: var(--terracotta); opacity: 0.35; }
+  .cover h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 400; font-variation-settings: 'opsz' 144, 'SOFT' 50; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+  .cover h1 em { font-style: italic; color: var(--terracotta); font-variation-settings: 'opsz' 144, 'SOFT' 100; }
+  .cover .subtitle { font-family: var(--font-display); font-style: italic; font-size: 1.12rem; font-weight: 300; color: var(--ink-soft); max-width: 52ch; }
+
+  /* Phase banner */
+  .phase-banner { padding: 3rem 4rem 1.5rem; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: baseline; border-bottom: 1px solid var(--rule); }
+  .phase-num { font-family: var(--font-display); font-size: 4.5rem; font-weight: 300; font-variation-settings: 'opsz' 144, 'SOFT' 100; font-style: italic; color: var(--terracotta); line-height: 0.8; }
+  .phase-tag { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.4rem; }
+  .phase-title { font-family: var(--font-display); font-size: 1.9rem; font-weight: 400; font-variation-settings: 'opsz' 144, 'SOFT' 50; line-height: 1.1; }
+  .phase-title em { font-style: italic; color: var(--terracotta); }
+  .phase-desc { font-size: 0.98rem; color: var(--ink-soft); margin-top: 0.7rem; max-width: 60ch; }
+
+  /* Insight line */
+  .insight { margin: 1.5rem 4rem; padding: 1.1rem 1.4rem; border-left: 3px solid var(--terracotta); background: rgba(184, 85, 40, 0.06); font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--ink-soft); line-height: 1.5; }
+  .insight::before { content: 'Insight'; display: block; font-family: var(--font-mono); font-style: normal; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.4rem; }
+
+  /* Day card */
+  .days { padding: 1rem 4rem; }
+  .day { padding: 2rem 0; border-bottom: 1px dashed var(--rule); }
+  .day:last-child { border-bottom: none; }
+  .day-head { display: grid; grid-template-columns: auto 1fr; gap: 1.6rem; align-items: baseline; }
+  .day-num { font-family: var(--font-display); font-style: italic; font-weight: 400; font-variation-settings: 'opsz' 144, 'SOFT' 100; font-size: 3.2rem; color: var(--terracotta); line-height: 0.85; }
+  .day-num-label { display: block; font-family: var(--font-mono); font-style: normal; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.2rem; }
+  .day-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; font-variation-settings: 'opsz' 40; line-height: 1.15; }
+  .day-meta { display: inline-flex; gap: 0.5rem; align-items: center; margin-top: 0.4rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .day-meta .time { color: var(--sage); }
+  .day-body { margin-top: 1.2rem; padding-left: calc(3.2rem + 1.6rem); }
+  @media (max-width: 720px) { .day-body { padding-left: 0; } }
+  .field { margin-bottom: 0.9rem; }
+  .field-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.25rem; }
+  .field p { font-size: 0.97rem; line-height: 1.55; }
+  .field.tools p { color: var(--ink); }
+  .field.source p { font-style: italic; color: var(--ink-soft); font-size: 0.92rem; }
+  code { font-family: var(--font-mono); font-size: 0.85em; background: rgba(184, 85, 40, 0.10); color: var(--terracotta-deep); padding: 0.08em 0.35em; border-radius: 3px; }
+  .key { font-family: var(--font-mono); font-size: 0.8em; background: var(--ink); color: var(--paper); padding: 0.1em 0.45em; border-radius: 3px; font-weight: 500; letter-spacing: 0.04em; }
+  .tool-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.72em; letter-spacing: 0.06em; background: rgba(40, 72, 88, 0.10); color: var(--cobalt); padding: 0.12em 0.5em; border-radius: 3px; margin: 0.1em 0.15em 0.1em 0; }
+
+  /* Boxes */
+  .box { padding: 1.1rem 1.3rem; border-radius: 0 4px 4px 0; margin: 1rem 0; }
+  .box-label { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.45rem; }
+  .box-label::before { content: ''; width: 14px; height: 1.5px; background: currentColor; }
+  .box p { margin-bottom: 0; font-size: 0.92rem; }
+  .box-why { background: rgba(40, 72, 88, 0.10); border-left: 3px solid var(--cobalt); }
+  .box-why .box-label { color: var(--cobalt); }
+  .box-stolper { background: rgba(196, 107, 58, 0.13); border-left: 3px solid var(--warning); }
+  .box-stolper .box-label { color: var(--warning); }
+  .box-merk { background: rgba(184, 85, 40, 0.10); border-left: 3px solid var(--terracotta); }
+  .box-merk .box-label { color: var(--terracotta); }
+  .box-check { background: rgba(138, 152, 120, 0.18); border-left: 3px solid var(--sage); }
+  .box-check .box-label { color: var(--sage); }
+
+  /* Diagram island — ALWAYS light, hardcoded colors */
+  figure.diagramm { background: #f3ecdc; border: 1px solid var(--rule); border-radius: 8px; padding: 1.5rem; margin: 1.4rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  figure.diagramm svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+  figure.diagramm figcaption { font-family: var(--font-display); font-style: italic; font-size: 0.9rem; color: #5a4d3a; text-align: center; margin-top: 0.8rem; }
+
+  .footer { padding: 3rem 4rem 1rem; border-top: 1px solid var(--rule); margin-top: 2rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+
+  /* Effizienz-Box — der KI-Workflow-Vorteil. Eigene Identität: Cobalt-Rahmen, Terracotta-Akzent */
+  .box-effizienz { background: linear-gradient(105deg, rgba(184,85,40,0.10), rgba(40,72,88,0.08)); border-left: 3px solid var(--terracotta); border-right: 1px solid rgba(40,72,88,0.25); position: relative; }
+  .box-effizienz .box-label { color: var(--terracotta); }
+  .box-effizienz .box-label::after { content: '⚡ CASCADEUR-KI'; margin-left: auto; font-size: 0.6rem; letter-spacing: 0.14em; color: var(--cobalt); opacity: 0.8; }
+  .box-effizienz .box-label { display: flex; width: 100%; }
+  .box-effizienz .gain { display: inline-block; margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.74rem; color: var(--cobalt); font-weight: 500; padding: 0.2rem 0.55rem; background: rgba(40,72,88,0.10); border-radius: 3px; }
+
+  /* Mini-Guide Schritte — nummerierte konkrete Handlungsschritte */
+  .schritte { margin: 1.1rem 0; padding: 1.2rem 1.4rem 1.2rem 1.3rem; background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 6px; }
+  .schritte-label { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+  .schritte-label::before { content: ''; width: 14px; height: 1.5px; background: currentColor; }
+  .schritte ol { list-style: none; counter-reset: step; margin: 0; padding: 0; }
+  .schritte li { counter-increment: step; position: relative; padding: 0.4rem 0 0.4rem 2.4rem; font-size: 0.93rem; line-height: 1.5; border-bottom: 1px dashed var(--rule); }
+  .schritte li:last-child { border-bottom: none; }
+  .schritte li::before { content: counter(step); position: absolute; left: 0; top: 0.42rem; width: 1.7rem; height: 1.7rem; background: var(--terracotta); color: var(--paper); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+  .schritte li strong { font-family: var(--font-display); font-weight: 500; }
+
+  /* === INDEX PAGE === */
+  .idx-hero { padding: 4rem 4rem 2.5rem; border-bottom: 1px solid var(--rule); position: relative; overflow: hidden; }
+  .idx-hero::before { content: ''; position: absolute; top: -15%; right: -5%; width: 45%; aspect-ratio: 1; background: radial-gradient(circle, rgba(184,85,40,0.10) 0%, transparent 65%); border-radius: 50%; }
+  .idx-hero .marker { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.5rem; }
+  .idx-hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem,6vw,4rem); font-weight: 400; font-variation-settings: 'opsz' 144, 'SOFT' 50; line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+  .idx-hero h1 em { font-style: italic; color: var(--terracotta); font-variation-settings: 'opsz' 144, 'SOFT' 100; }
+  .idx-hero .sub { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; font-weight: 300; color: var(--ink-soft); max-width: 60ch; }
+  .idx-hero .stats { display: flex; gap: 2.5rem; margin-top: 2rem; flex-wrap: wrap; }
+  .idx-hero .stat { font-family: var(--font-mono); }
+  .idx-hero .stat .n { font-family: var(--font-display); font-size: 2.2rem; font-style: italic; color: var(--terracotta); font-variation-settings: 'opsz' 144; display: block; line-height: 1; }
+  .idx-hero .stat .l { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.3rem; }
+
+  .idx-intro { padding: 2.5rem 4rem; border-bottom: 1px solid var(--rule); background: rgba(237,228,208,0.18); }
+  .idx-intro p { max-width: 70ch; font-size: 1rem; color: var(--ink-soft); }
+  .idx-intro strong { color: var(--ink); font-family: var(--font-display); font-weight: 500; }
+
+  .phase-grid { padding: 3rem 4rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .pcard { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; transition: border-color 0.15s; }
+  .pcard:hover { border-color: var(--terracotta); }
+  .pcard-head { display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem; align-items: center; padding: 1.4rem 1.8rem; background: rgba(184,85,40,0.05); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .pcard-num { font-family: var(--font-display); font-size: 3rem; font-style: italic; font-weight: 300; font-variation-settings: 'opsz' 144, 'SOFT' 100; color: var(--terracotta); line-height: 0.8; }
+  .pcard-meta .ptag { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.25rem; }
+  .pcard-meta .ptitle { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--ink); line-height: 1.1; }
+  .pcard-meta .pdesc { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.3rem; }
+  .pcard-go { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); white-space: nowrap; }
+  .pcard-days { list-style: none; margin: 0; padding: 0.8rem 1.8rem 1.2rem; columns: 2; column-gap: 2rem; }
+  @media (max-width: 720px) { .pcard-days { columns: 1; } }
+  .pcard-days li { break-inside: avoid; }
+  .pcard-days a { display: flex; gap: 0.7rem; padding: 0.35rem 0; text-decoration: none; border-bottom: 1px dashed var(--rule); align-items: baseline; }
+  .pcard-days a:hover .dt { color: var(--terracotta); }
+  .pcard-days .dn { font-family: var(--font-mono); font-size: 0.72rem; color: var(--terracotta); font-weight: 500; min-width: 2.2rem; }
+  .pcard-days .dt { font-size: 0.9rem; color: var(--ink); line-height: 1.3; }
+
+  @media (max-width: 720px) {
+    .idx-hero, .idx-intro, .phase-grid { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .pcard-head { grid-template-columns: auto 1fr; gap: 1rem; }
+    .pcard-go { display: none; }
+  }
+  .nav { display: flex; justify-content: space-between; align-items: stretch; gap: 0.8rem; padding: 1.2rem 4rem; border-bottom: 1px solid var(--rule); }
+  .nav.bottom { border-bottom: none; border-top: 1px solid var(--rule); margin-top: 1rem; padding-top: 1.5rem; padding-bottom: 2rem; }
+  .nav a, .nav span.navslot { flex: 1; display: flex; flex-direction: column; gap: 0.2rem; padding: 0.7rem 1rem; border: 1px solid var(--rule); border-radius: 6px; text-decoration: none; transition: border-color 0.15s, background 0.15s; }
+  .nav a:hover { border-color: var(--terracotta); background: rgba(184,85,40,0.05); }
+  .nav a.prev { align-items: flex-start; }
+  .nav a.next { align-items: flex-end; text-align: right; }
+  .nav a.index { align-items: center; text-align: center; flex: 0 0 auto; }
+  .nav .nav-dir { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracotta); }
+  .nav .nav-title { font-family: var(--font-display); font-size: 0.95rem; color: var(--ink); font-weight: 500; line-height: 1.15; }
+  .nav span.navslot.empty { border: 1px dashed var(--rule); opacity: 0.4; }
+  .nav span.navslot.empty .nav-dir { color: var(--ink-faint); }
+
+  @media (max-width: 720px) {
+    .cover, .phase-banner, .days, .insight, .footer, .nav { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .insight { margin-left: 1.5rem; margin-right: 1.5rem; }
+    .day-head { grid-template-columns: 1fr; gap: 0.3rem; }
+    .phase-banner { grid-template-columns: 1fr; }
+    .nav { flex-direction: column; }
+    .schritte li { padding-left: 2.2rem; }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #1a1612; --paper-warm: #221d17; --paper-dark: #2a241c;
+      --ink: #ebe3d0; --ink-soft: #b8a98a; --ink-faint: #7a6e58;
+      --terracotta: #e8814a; --terracotta-deep: #c25a2a;
+      --cobalt: #6a9aab; --sage: #a8b898; --warning: #e2884d; --rule: #3a3026;
+    }
+    body { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.7 0 0 0 0.04 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+    code { background: rgba(232, 129, 74, 0.15); }
+    figure.diagramm { box-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+    .box-effizienz { background: linear-gradient(105deg, rgba(232,129,74,0.14), rgba(106,154,171,0.10)); }
+    .schritte { background: var(--paper-warm); }
+  }
+</style>
+</head>
+<body>
+<article class="doc">
+
+<header class="idx-hero">
+  <div class="marker">Cascadeur 2026.1 · 100-Tage Mini-Guide</div>
+  <h1>100 Tage zur <em>Animation mit KI</em></h1>
+  <p class="sub">Professionelle Animationstechniken mit Cascadeurs KI-Werkzeugen — Inbetweening, AutoPhysics, AutoPosing. Vom ersten Posing bis zur eigenen Sequenz. Nicht der klassische Frame-für-Frame-Weg, sondern der schnelle Cascadeur-Weg.</p>
+  <div class="stats">
+    <div class="stat"><span class="n">100</span><span class="l">Tage</span></div>
+    <div class="stat"><span class="n">9</span><span class="l">Phasen</span></div>
+    <div class="stat"><span class="n">15–30</span><span class="l">Min pro Tag</span></div>
+  </div>
+</header>
+
+<section class="idx-intro">
+  <p>Jeder Tag ist ein <strong>Mini-Guide</strong>: konkrete Schritte mit echten Parametern, welche Cascadeur-Tools du nutzt, ein Strichmännchen-Diagramm der Zwischenschritte, und eine <strong>Effizienz-Box</strong>, die zeigt, wo der KI-Workflow Zeit spart. Roter Faden ist <strong>Inbetweening</strong>: wenige Schlüsselposen setzen, die KI rechnet die Bewegung dazwischen. Adressat ist ein erfahrener 3D-Pipeliner (UE5, MetaHuman, Blender) — keine 3D-Grundlagen, kein klassisches Handkeyframing.</p>
+  <p style="margin-top:1rem"><a href="100tage-wiederhol-fahrplan.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.04em;color:var(--terracotta);text-decoration:none;border:1px solid var(--terracotta);border-radius:5px;padding:0.5rem 0.9rem">🔁 Wiederhol-Fahrplan öffnen — damit Gelerntes bleibt</a></p>
+</section>
+
+<div class="phase-grid">
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-1-fundament.html">
+      <div class="pcard-num">1</div>
+      <div class="pcard-meta"><div class="ptag">Tag 1–10 · Fundament</div><div class="ptitle">Cascadeur-Fundament</div><div class="pdesc">Interface, AutoPosing, CoM, Grounder, erste Inbetweening-Berührung</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-1-fundament.html#tag1"><span class="dn">01</span><span class="dt">Interface-Tour & Scene-Setup mit Manny</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag2"><span class="dn">02</span><span class="dt">AutoPosing — die erste saubere Stand-Pose</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag3"><span class="dn">03</span><span class="dt">Center of Mass lesen</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag4"><span class="dn">04</span><span class="dt">Grounder & Bodenkontakt</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag5"><span class="dn">05</span><span class="dt">Gewichtsverlagerung — asymmetrischer Stand</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag6"><span class="dn">06</span><span class="dt">Fixation & aktive Controller</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag7"><span class="dn">07</span><span class="dt">Zwei Posen, eine Timeline</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag8"><span class="dn">08</span><span class="dt">Interpolations-Typen vergleichen</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag9"><span class="dn">09</span><span class="dt">AutoPhysics — erster Kontakt mit Secondary Motion</span></a></li>
+      <li><a href="100tage-phase-1-fundament.html#tag10"><span class="dn">10</span><span class="dt">Phase-1-Abschluss — die lebendige Idle-Pose</span></a></li>
+    </ul>
+  </div>
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-2-physik.html">
+      <div class="pcard-num">2</div>
+      <div class="pcard-meta"><div class="ptag">Tag 11–22 · Physik</div><div class="ptitle">Physik-Primitives</div><div class="pdesc">Bouncing Ball, Pendel, Gewicht. Trajectory Tangents + AutoPhysics</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-2-physik.html#tag11"><span class="dn">11</span><span class="dt">Bouncing Ball — Inbetweening wird zum Standard</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag12"><span class="dn">12</span><span class="dt">Squash & Stretch am Ball</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag13"><span class="dn">13</span><span class="dt">FK-Keyframe-Stolperfalle verstehen</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag14"><span class="dn">14</span><span class="dt">AutoPhysics in drei Durchläufen</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag15"><span class="dn">15</span><span class="dt">Pendel — Momentum und Drag</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag16"><span class="dn">16</span><span class="dt">Doppel-Pendel — überlappende Bewegung</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag17"><span class="dn">17</span><span class="dt">Fallendes Gewicht — schwer vs. leicht</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag18"><span class="dn">18</span><span class="dt">Trajectory Tangents — Bögen bewusst formen</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag19"><span class="dn">19</span><span class="dt">Rollender Ball mit Drehung</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag20"><span class="dn">20</span><span class="dt">Selektives Re-Inbetweening</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag21"><span class="dn">21</span><span class="dt">Spacing-Diagnose meistern</span></a></li>
+      <li><a href="100tage-phase-2-physik.html#tag22"><span class="dn">22</span><span class="dt">Phase-2-Abschluss — die Physik-Kette</span></a></li>
+    </ul>
+  </div>
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-3-bodymechanics.html">
+      <div class="pcard-num">3</div>
+      <div class="pcard-meta"><div class="ptag">Tag 23–38 · Body Mechanics</div><div class="ptitle">Body Mechanics</div><div class="pdesc">Posing, Balance, Weight Shift, Heben, Werfen. Inbetweening etabliert sich</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-3-bodymechanics.html#tag23"><span class="dn">23</span><span class="dt">Starke Anker-Pose mit Kraft-Richtung</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag24"><span class="dn">24</span><span class="dt">Balance über dem Schwerpunkt</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag25"><span class="dn">25</span><span class="dt">Straights gegen Curves</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag26"><span class="dn">26</span><span class="dt">Silhouette-Test</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag27"><span class="dn">27</span><span class="dt">Weight Shift — Gewicht von Bein zu Bein</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag28"><span class="dn">28</span><span class="dt">Anticipation vor der Bewegung</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag29"><span class="dn">29</span><span class="dt">Squash & Stretch am Körper</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag30"><span class="dn">30</span><span class="dt">Eine leichte Kiste heben</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag31"><span class="dn">31</span><span class="dt">Eine schwere Kiste heben</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag32"><span class="dn">32</span><span class="dt">Werfen — Kraft durch den ganzen Körper</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag33"><span class="dn">33</span><span class="dt">Follow-Through & Overlapping Action</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag34"><span class="dn">34</span><span class="dt">Drücken & Ziehen</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag35"><span class="dn">35</span><span class="dt">Pose-zu-Pose mit Moving Holds</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag36"><span class="dn">36</span><span class="dt">Reaktion auf einen Stoß</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag37"><span class="dn">37</span><span class="dt">Track-Hierarchie als Polish-Werkzeug</span></a></li>
+      <li><a href="100tage-phase-3-bodymechanics.html#tag38"><span class="dn">38</span><span class="dt">Phase-3-Abschluss — eine Body-Mechanics-Beat</span></a></li>
+    </ul>
+  </div>
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-4-walkcycles.html">
+      <div class="pcard-num">4</div>
+      <div class="pcard-meta"><div class="ptag">Tag 39–54 · Walk Cycles</div><div class="ptitle">Walk Cycles</div><div class="pdesc">Contact+Down-Anker, Inbetweening-Loop, Fulcrum Cleaning, Cycle-Tools</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-4-walkcycles.html#tag39"><span class="dn">39</span><span class="dt">Die vier Schlüsselposen des Gangs</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag40"><span class="dn">40</span><span class="dt">Inbetweening generiert den Cycle</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag41"><span class="dn">41</span><span class="dt">Cycle schließen — Loop & Foot-Sliding beheben</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag42"><span class="dn">42</span><span class="dt">Arme & Gegenschwung</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag43"><span class="dn">43</span><span class="dt">Reference-Workflow — Video oder Muybridge</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag44"><span class="dn">44</span><span class="dt">Leading Action — Bewegung in Wellen</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag45"><span class="dn">45</span><span class="dt">Personality Walk — ein Gang mit Charakter</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag46"><span class="dn">46</span><span class="dt">Der müde Gang</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag47"><span class="dn">47</span><span class="dt">Der fröhliche Gang</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag48"><span class="dn">48</span><span class="dt">Der wütende Gang</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag49"><span class="dn">49</span><span class="dt">Der Sneak — schleichen</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag50"><span class="dn">50</span><span class="dt">Gewicht tragen im Gang</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag51"><span class="dn">51</span><span class="dt">Richtungswechsel im Gehen</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag52"><span class="dn">52</span><span class="dt">Walk in Bewegung durch den Raum</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag53"><span class="dn">53</span><span class="dt">Export-Test — Walk in UE5</span></a></li>
+      <li><a href="100tage-phase-4-walkcycles.html#tag54"><span class="dn">54</span><span class="dt">Phase-4-Abschluss — drei Gänge</span></a></li>
+    </ul>
+  </div>
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-5-runjog.html">
+      <div class="pcard-num">5</div>
+      <div class="pcard-meta"><div class="ptag">Tag 55–66 · Run / Jog</div><div class="ptitle">Run / Jog</div><div class="pdesc">Jog, Run, Sprint, Stop-and-Start. Flugphase, ballistische Parabel</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-5-runjog.html#tag55"><span class="dn">55</span><span class="dt">Der Jog — lockeres Laufen</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag56"><span class="dn">56</span><span class="dt">Der volle Run — die Flugphase</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag57"><span class="dn">57</span><span class="dt">Run durch den Raum mit Root Motion</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag58"><span class="dn">58</span><span class="dt">Trajectory Tangents für schnelle Bögen</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag59"><span class="dn">59</span><span class="dt">Der Sprint — maximale Geschwindigkeit</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag60"><span class="dn">60</span><span class="dt">Beschleunigen — Start aus dem Stand</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag61"><span class="dn">61</span><span class="dt">Abbremsen — vom Lauf zum Stand</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag62"><span class="dn">62</span><span class="dt">Stop-and-Start — Richtungswechsel im Lauf</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag63"><span class="dn">63</span><span class="dt">Müder Lauf gegen frischen Lauf</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag64"><span class="dn">64</span><span class="dt">Mocap-Run säubern</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag65"><span class="dn">65</span><span class="dt">Run-Export nach UE5</span></a></li>
+      <li><a href="100tage-phase-5-runjog.html#tag66"><span class="dn">66</span><span class="dt">Phase-5-Abschluss — Lauf mit Tempowechsel</span></a></li>
+    </ul>
+  </div>
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-6-action.html">
+      <div class="pcard-num">6</div>
+      <div class="pcard-meta"><div class="ptag">Tag 67–78 · Action</div><div class="ptitle">Action</div><div class="pdesc">Sprung, Fall, Landung, Impact, Ausweichen. AutoPhysics-Ballistik</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-6-action.html#tag67"><span class="dn">67</span><span class="dt">Der Sprung — Anticipation, Flug, Landung</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag68"><span class="dn">68</span><span class="dt">Weitsprung — horizontale Distanz</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag69"><span class="dn">69</span><span class="dt">Freier Fall</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag70"><span class="dn">70</span><span class="dt">Harte Landung mit Roll</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag71"><span class="dn">71</span><span class="dt">Impact — getroffen werden</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag72"><span class="dn">72</span><span class="dt">Ausweichen — Dodge</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag73"><span class="dn">73</span><span class="dt">Rückwärtssalto — Rotation in der Luft</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag74"><span class="dn">74</span><span class="dt">Kick — ein Tritt mit voller Kraft</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag75"><span class="dn">75</span><span class="dt">Schlag-Austausch mit Waffe (Constraints)</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag76"><span class="dn">76</span><span class="dt">Sprung über ein Hindernis</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag77"><span class="dn">77</span><span class="dt">Action-Export & Ballistik-Kontrolle</span></a></li>
+      <li><a href="100tage-phase-6-action.html#tag78"><span class="dn">78</span><span class="dt">Phase-6-Abschluss — eine Action-Sequenz</span></a></li>
+    </ul>
+  </div>
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-7-acting.html">
+      <div class="pcard-num">7</div>
+      <div class="pcard-meta"><div class="ptag">Tag 79–88 · Acting</div><div class="ptitle">Acting durch Körper</div><div class="pdesc">Emotion über Haltung und Geste, kein Gesicht. Weight Shift als Sprache</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-7-acting.html#tag79"><span class="dn">79</span><span class="dt">Das denkende Stehen</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag80"><span class="dn">80</span><span class="dt">Emotion über Haltung — vier Grundstimmungen</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag81"><span class="dn">81</span><span class="dt">Die Geste vor der Aktion</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag82"><span class="dn">82</span><span class="dt">Weight Shift als emotionale Sprache</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag83"><span class="dn">83</span><span class="dt">Silhouette der Emotion</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag84"><span class="dn">84</span><span class="dt">Reaktion — der Körper empfängt eine Nachricht</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag85"><span class="dn">85</span><span class="dt">Zwei Posen, ein innerer Wandel</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag86"><span class="dn">86</span><span class="dt">Subtext — der Körper sagt etwas anderes</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag87"><span class="dn">87</span><span class="dt">Acting trifft Lokomotion</span></a></li>
+      <li><a href="100tage-phase-7-acting.html#tag88"><span class="dn">88</span><span class="dt">Phase-7-Abschluss — ein stummer Monolog</span></a></li>
+    </ul>
+  </div>
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-8-cartoon.html">
+      <div class="pcard-num">8</div>
+      <div class="pcard-meta"><div class="ptag">Tag 89–96 · Cartoon</div><div class="ptitle">Cartoon-Stil</div><div class="pdesc">Squash & Stretch extrem, Exaggeration, Smear, Stepped-Mix, Scale-Trick</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-8-cartoon.html#tag89"><span class="dn">89</span><span class="dt">Extremes Squash & Stretch</span></a></li>
+      <li><a href="100tage-phase-8-cartoon.html#tag90"><span class="dn">90</span><span class="dt">Exaggeration — über die Wahrheit hinaus</span></a></li>
+      <li><a href="100tage-phase-8-cartoon.html#tag91"><span class="dn">91</span><span class="dt">Smear-Frames — schnelle Bewegung verwischen</span></a></li>
+      <li><a href="100tage-phase-8-cartoon.html#tag92"><span class="dn">92</span><span class="dt">Held-Frames & Stepped-Mix</span></a></li>
+      <li><a href="100tage-phase-8-cartoon.html#tag93"><span class="dn">93</span><span class="dt">Der Take — die überzeichnete Reaktion</span></a></li>
+      <li><a href="100tage-phase-8-cartoon.html#tag94"><span class="dn">94</span><span class="dt">Cartoon-Walk mit Bounce</span></a></li>
+      <li><a href="100tage-phase-8-cartoon.html#tag95"><span class="dn">95</span><span class="dt">Cartoon-Export & Stil-Kontrolle</span></a></li>
+      <li><a href="100tage-phase-8-cartoon.html#tag96"><span class="dn">96</span><span class="dt">Phase-8-Abschluss — ein Cartoon-Gag</span></a></li>
+    </ul>
+  </div>
+  <div class="pcard">
+    <a class="pcard-head" href="100tage-phase-9-kombination.html">
+      <div class="pcard-num">9</div>
+      <div class="pcard-meta"><div class="ptag">Tag 97–100 · Kombination</div><div class="ptitle">Kombination · Finale</div><div class="pdesc">Narrative Beats aus allen Bausteinen. Übergänge, Previsualization</div></div>
+      <div class="pcard-go">öffnen →</div>
+    </a>
+    <ul class="pcard-days">
+      <li><a href="100tage-phase-9-kombination.html#tag97"><span class="dn">97</span><span class="dt">Übergänge zwischen Bewegungstypen</span></a></li>
+      <li><a href="100tage-phase-9-kombination.html#tag98"><span class="dn">98</span><span class="dt">Previsualization — die Beats planen</span></a></li>
+      <li><a href="100tage-phase-9-kombination.html#tag99"><span class="dn">99</span><span class="dt">Eine Sequenz mit narrativem Beat</span></a></li>
+      <li><a href="100tage-phase-9-kombination.html#tag100"><span class="dn">100</span><span class="dt">Tag 100 — dein eigenes Stück</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Cascadeur 100-Tage Mini-Guide</span>
+  <span>9 Phasen · Tag 1–100</span>
+  <span>Start: Phase 1 · Fundament</span>
+</div>
+</article>
+</body>
+</html>
