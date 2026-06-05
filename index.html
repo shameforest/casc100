@@ -1,0 +1,115 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>100-Tage Cascadeur-Guide · Übersicht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3ecdc;--card:#fbf6ea;--ink:#1f1a14;--ink-soft:#5a4d3a;--ink-faint:#7a6e58;
+--terra:#b85528;--cobalt:#284858;--sage:#8a9878;--warn:#c46b3a;--rule:#c8b89a}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font-family:'DM Sans',system-ui,sans-serif;line-height:1.5;
+ padding:36px 24px;max-width:880px;margin:0 auto;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
+h1{font-family:'Fraunces',Georgia,serif;font-size:30px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em}
+h1 em{font-style:italic;color:var(--terra)}
+.lead{color:var(--ink-faint);font-size:15px;margin:0 0 30px;max-width:680px}
+.phase-banner{display:flex;align-items:baseline;gap:14px;margin:34px 0 22px;padding:0 0 10px;border-bottom:2px solid var(--terra)}
+.phase-banner .pn{font-family:'Fraunces',serif;font-style:italic;font-size:46px;font-weight:600;color:var(--terra);line-height:1}
+.phase-banner .pt{font-family:'Fraunces',serif;font-size:21px;font-weight:600}
+.phase-banner .pd{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:0.04em;margin-left:auto}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:22px 24px;margin:0 0 18px;position:relative}
+.tag-head{display:flex;align-items:baseline;gap:14px;margin:0 0 10px}
+.tag-num{font-family:'Fraunces',serif;font-style:italic;font-size:34px;font-weight:600;color:var(--terra);line-height:0.9;flex:0 0 auto}
+.tag-num small{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:10px;color:var(--ink-faint);display:block;letter-spacing:0.1em}
+.tag-title{font-family:'Fraunces',serif;font-size:19px;font-weight:600;padding-top:4px}
+.tag-goal{font-size:14px;color:var(--ink-soft);margin:0 0 14px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0 0 4px;padding:12px 0 0;border-top:1px dotted var(--rule)}
+.meta-item{font-size:12.5px}
+.meta-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.08em;color:var(--terra);text-transform:uppercase;display:block;margin-bottom:1px}
+.meta-val{color:var(--ink-soft)}
+.tool-tag{font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(184,85,40,0.1);color:var(--terra);padding:1px 6px;border-radius:4px;white-space:nowrap}
+.box{border-radius:9px;padding:11px 14px;margin:12px 0 0;font-size:13px}
+.box-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:3px;font-weight:700}
+.box-why{background:#eaf0f3;border:1px solid #c5d6de}.box-why .box-label{color:var(--cobalt)}
+.box-stolper{background:#f7ede4;border:1px solid #e2c3a8}.box-stolper .box-label{color:var(--warn)}
+.box-merk{background:#f7ecde;border:1px solid #e8c89a}.box-merk .box-label{color:var(--terra)}
+.box-check{background:#eef2e8;border:1px solid #cdd9bf}.box-check .box-label{color:#5a7048}
+.diagram-island{margin:14px 0 0;border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#f3ecdc}
+.diagram-island svg{display:block;width:100%;height:auto}
+.diagram-cap{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);padding:8px 12px;border-top:1px solid var(--rule);background:#f3ecdc}
+.insight{font-style:italic;color:var(--ink-soft);font-size:14px;margin:20px 0;padding:0 0 0 16px;border-left:3px solid var(--sage)}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-faint);line-height:1.7}
+
+/* === Phasen-Navigation (injiziert) === */
+.phasenav{display:flex;justify-content:space-between;align-items:stretch;gap:.8rem;
+  margin:1.4rem auto;max-width:880px;padding:0 1rem;box-sizing:border-box;}
+.phasenav a{display:flex;flex-direction:column;gap:.15rem;text-decoration:none;
+  padding:.7rem 1rem;border:1px solid var(--rule,#c8b89a);border-radius:10px;
+  background:var(--card,#fbf6ea);transition:border-color .15s,transform .15s;min-width:0;}
+.phasenav a:hover{border-color:var(--terra,var(--terracotta,#b85528));transform:translateY(-1px);}
+.phasenav a.pn-prev{align-items:flex-start;text-align:left;}
+.phasenav a.pn-next{align-items:flex-end;text-align:right;}
+.phasenav a.pn-index{align-items:center;text-align:center;flex:0 0 auto;}
+.phasenav .pn-dir{font-family:var(--font-mono,'JetBrains Mono',monospace);font-size:.6rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--terra,var(--terracotta,#b85528));}
+.phasenav .pn-title{font-family:var(--font-display,'Fraunces',serif);font-size:.92rem;
+  color:var(--ink,#1f1a14);font-weight:500;line-height:1.15;}
+.phasenav .pn-disabled{visibility:hidden;}
+@media(max-width:560px){.phasenav .pn-title{font-size:.78rem;}.phasenav a{padding:.55rem .7rem;}}
+@media(prefers-color-scheme:dark){
+  .phasenav a{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.14);}
+}
+
+@media(prefers-color-scheme:dark){
+ body{background:#1a1611;color:#ede4d0}
+ .card{background:#241f17;border-color:#463e2e}
+ .lead,.tag-goal{color:#c9bca2}
+ .meta-val{color:#d8ccb4}
+ .box-why{background:#1e2a30;border-color:#2d4450}
+ .box-stolper{background:#2e2218;border-color:#5a3a22}
+ .box-merk{background:#2c2013;border-color:#6a4420}
+ .box-check{background:#1f2a1c;border-color:#3a4a30}
+}
+/* === Index-spezifisch === */
+.idx-wrap{max-width:760px;margin:0 auto;}
+.idx-grid{display:flex;flex-direction:column;gap:.7rem;margin-top:2rem;}
+.idx-card{display:flex;align-items:center;gap:1.2rem;text-decoration:none;
+  padding:1.1rem 1.4rem;border:1px solid var(--rule,#c8b89a);border-radius:12px;
+  background:var(--card,#fbf6ea);transition:border-color .15s,transform .15s;}
+.idx-card:hover{border-color:var(--terra,#b85528);transform:translateY(-2px);}
+.idx-num{font-family:var(--font-display,'Fraunces',serif);font-style:italic;
+  font-size:2.4rem;font-weight:600;color:var(--terra,#b85528);line-height:1;
+  flex:0 0 2.6rem;text-align:center;}
+.idx-body{flex:1;}
+.idx-thema{font-family:var(--font-display,'Fraunces',serif);font-size:1.25rem;
+  font-weight:600;color:var(--ink,#1f1a14);}
+.idx-range{font-family:var(--font-mono,'JetBrains Mono',monospace);font-size:.72rem;
+  letter-spacing:.1em;color:var(--ink-faint,#7a6e58);text-transform:uppercase;margin-top:.2rem;}
+.idx-arrow{font-size:1.3rem;color:var(--terra,#b85528);opacity:.6;}
+.idx-card:hover .idx-arrow{opacity:1;}
+.idx-foot{margin-top:2.5rem;font-size:.85rem;color:var(--ink-faint,#7a6e58);
+  border-top:1px solid var(--rule,#c8b89a);padding-top:1.2rem;}
+@media(prefers-color-scheme:dark){
+  .idx-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.14);}
+}
+</style></head><body>
+<div class="idx-wrap">
+<h1>100-Tage Cascadeur-Guide</h1>
+<p class="lead">Cascadeur 2026.1.x · Inbetweening als Produktions-Kern in einer UE5/MetaHuman-Pipeline. 100 Tage in 9 Phasen – von den Werkzeug-Grundlagen über Physik, Body Mechanics, Lokomotion und Action bis zu Acting, Cartoon-Stil und narrativer Kombination. Für erfahrene 3D-Pipeliner.</p>
+<div class="phase-banner"><span class="pn">100</span><span class="pt">Tage</span><span class="pd">9 PHASEN · KÖRPER-PERFORMANCE IN CASCADEUR</span></div>
+<div class="idx-grid">
+<a class="idx-card" href="100tage-phase-1-fundament.html"><div class="idx-num">1</div><div class="idx-body"><div class="idx-thema">Cascadeur-Fundament</div><div class="idx-range">Tag 1–10</div></div><div class="idx-arrow">→</div></a>
+<a class="idx-card" href="100tage-phase-2-physik.html"><div class="idx-num">2</div><div class="idx-body"><div class="idx-thema">Physik-Primitives</div><div class="idx-range">Tag 11–22</div></div><div class="idx-arrow">→</div></a>
+<a class="idx-card" href="100tage-phase-3-bodymechanics.html"><div class="idx-num">3</div><div class="idx-body"><div class="idx-thema">Body Mechanics</div><div class="idx-range">Tag 23–38</div></div><div class="idx-arrow">→</div></a>
+<a class="idx-card" href="100tage-phase-4-walkcycles.html"><div class="idx-num">4</div><div class="idx-body"><div class="idx-thema">Walk Cycles</div><div class="idx-range">Tag 39–54</div></div><div class="idx-arrow">→</div></a>
+<a class="idx-card" href="100tage-phase-5-runjog.html"><div class="idx-num">5</div><div class="idx-body"><div class="idx-thema">Run / Jog</div><div class="idx-range">Tag 55–66</div></div><div class="idx-arrow">→</div></a>
+<a class="idx-card" href="100tage-phase-6-action.html"><div class="idx-num">6</div><div class="idx-body"><div class="idx-thema">Action</div><div class="idx-range">Tag 67–78</div></div><div class="idx-arrow">→</div></a>
+<a class="idx-card" href="100tage-phase-7-acting.html"><div class="idx-num">7</div><div class="idx-body"><div class="idx-thema">Acting durch Körper</div><div class="idx-range">Tag 79–88</div></div><div class="idx-arrow">→</div></a>
+<a class="idx-card" href="100tage-phase-8-cartoon.html"><div class="idx-num">8</div><div class="idx-body"><div class="idx-thema">Cartoon-Stil</div><div class="idx-range">Tag 89–96</div></div><div class="idx-arrow">→</div></a>
+<a class="idx-card" href="100tage-phase-9-kombination.html"><div class="idx-num">9</div><div class="idx-body"><div class="idx-thema">Kombination</div><div class="idx-range">Tag 97–100</div></div><div class="idx-arrow">→</div></a>
+</div>
+<p class="idx-foot">Körper-Performance entsteht in Cascadeur, Gesicht in MetaHuman. Diagramm-Werte sind illustrativ. Tool-Verhalten gegen cascadeur.com/help verifiziert.</p>
+</div>
+</body></html>
